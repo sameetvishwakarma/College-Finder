@@ -1,0 +1,340 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 210 40% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 40% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 40% 11%;
+
+    --primary: 174 80% 24%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 38 92% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 20% 94%;
+    --muted-foreground: 210 15% 45%;
+
+    --accent: 174 60% 95%;
+    --accent-foreground: 174 80% 20%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 20% 88%;
+    --input: 210 20% 88%;
+    --ring: 174 80% 24%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --notice: 38 92% 50%;
+    --notice-foreground: 38 100% 15%;
+    --notice-bg: 38 100% 96%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 142 100% 95%;
+
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 100%;
+
+    --gradient-hero: linear-gradient(135deg, hsl(174 80% 24%) 0%, hsl(199 89% 38%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 20% 98%) 100%);
+
+    --shadow-card: 0 4px 6px -1px hsl(210 40% 11% / 0.05), 0 2px 4px -2px hsl(210 40% 11% / 0.05);
+    --shadow-card-hover: 0 10px 15px -3px hsl(210 40% 11% / 0.08), 0 4px 6px -4px hsl(210 40% 11% / 0.08);
+    --shadow-lg: 0 20px 25px -5px hsl(210 40% 11% / 0.1), 0 8px 10px -6px hsl(210 40% 11% / 0.1);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 210 40% 8%;
+    --foreground: 210 20% 95%;
+
+    --card: 210 35% 12%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 210 35% 12%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 174 70% 45%;
+    --primary-foreground: 210 40% 8%;
+
+    --secondary: 38 92% 55%;
+    --secondary-foreground: 38 100% 10%;
+
+    --muted: 210 30% 18%;
+    --muted-foreground: 210 15% 60%;
+
+    --accent: 174 40% 20%;
+    --accent-foreground: 174 70% 80%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 30% 20%;
+    --input: 210 30% 20%;
+    --ring: 174 70% 45%;
+
+    --notice: 38 92% 55%;
+    --notice-foreground: 38 100% 95%;
+    --notice-bg: 38 40% 15%;
+
+    --success: 142 70% 45%;
+    --success-foreground: 142 100% 10%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  .card-gradient {
+    background: var(--gradient-card);
+  }
+
+  .notice-board {
+    background-color: hsl(var(--notice-bg));
+    border-left: 4px solid hsl(var(--notice));
+  }
+
+  .filter-card {
+    background-color: hsl(var(--card));
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    border: 1px solid hsl(var(--border));
+    padding: 1.5rem;
+    backdrop-filter: blur(8px);
+    background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--background)) 100%);
+    transition: background-color 200ms ease, border-color 200ms ease, box-shadow 300ms ease;
+  }
+
+  .college-card {
+    background-color: hsl(var(--card));
+    border-radius: var(--radius);
+    border: 1px solid hsl(var(--border));
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-card);
+  }
+
+  .college-card:hover {
+    box-shadow: var(--shadow-card-hover);
+    border-color: hsl(var(--primary) / 0.3);
+    transform: translateY(-0.5rem);
+  }
+
+  .badge-aided {
+    background-color: hsl(var(--success) / 0.1);
+    color: hsl(var(--success));
+  }
+
+  .badge-unaided {
+    background-color: hsl(var(--info) / 0.1);
+    color: hsl(var(--info));
+  }
+
+  .badge-self-financed {
+    background-color: hsl(var(--notice) / 0.1);
+    color: hsl(var(--notice-foreground));
+  }
+
+  .step-number {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, hsl(239 84% 67%) 0%, hsl(217 91% 60%) 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Global dark mode transition */
+*, *::before, *::after {
+  transition-property: background-color, border-color, color;
+  transition-duration: 200ms;
+  transition-timing-function: ease;
+}
+
+/* Background zoom animation for hero */
+@keyframes zoomSubtle {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-zoom-subtle {
+  animation: zoomSubtle 14s ease-in-out infinite;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Premium fade-in-up animation for hero section */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Floating animation for background blobs */
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -30px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+.animate-float {
+  animation: float 20s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 25s ease-in-out infinite;
+  animation-delay: -5s;
+}
+
+/* Pulse animation */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+/* Gradient radial utility */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+/* Auth page — full-page fade-in on mount */
+@keyframes authPageEnter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.auth-page-enter {
+  animation: authPageEnter 0.6s ease-out forwards;
+}
+
+/* Auth background image — slow Ken-Burns zoom (performance-safe: only transform) */
+@keyframes authBgZoom {
+  0%   { transform: scale(1);    }
+  100% { transform: scale(1.08); }
+}
+
+.auth-bg-zoom {
+  animation: authBgZoom 20s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* Auth card — slide-up fade-in */
+@keyframes authCardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auth-card-enter {
+  animation: authCardEnter 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
