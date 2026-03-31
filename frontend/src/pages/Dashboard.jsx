@@ -27,13 +27,13 @@ export default function Dashboard() {
 
   useEffect(() => {
     if (!user) return; // ProtectedRoute handles redirect
-    fetch("http://localhost:5000/api/colleges/allcolleges")
+    fetch("https://college-finder-7xrp.onrender.com/api/colleges/allcolleges")
       .then((r) => r.json())
       .then((data) => {
         const list = Array.isArray(data) ? data : (data.data ?? []);
         setColleges(list.map(transformCollege));
       })
-      .catch(() => {})
+      .catch(() => { })
       .finally(() => setLoading(false));
   }, [user, navigate]);
 

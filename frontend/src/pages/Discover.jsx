@@ -13,10 +13,10 @@ import { useAuth } from "../context/AuthContext";
 
 // ─── Fee ranges used by the filter ──────────────────────────────────────────
 const feeRanges = [
-  { value: "0-5000",     label: "Under ₹5,000",       min: 0,     max: 5000  },
-  { value: "5000-10000", label: "₹5,000 – ₹10,000",   min: 5000,  max: 10000 },
-  { value: "10000-20000",label: "₹10,000 – ₹20,000",  min: 10000, max: 20000 },
-  { value: "20000+",     label: "Above ₹20,000",       min: 20000, max: null  },
+  { value: "0-5000", label: "Under ₹5,000", min: 0, max: 5000 },
+  { value: "5000-10000", label: "₹5,000 – ₹10,000", min: 5000, max: 10000 },
+  { value: "10000-20000", label: "₹10,000 – ₹20,000", min: 10000, max: 20000 },
+  { value: "20000+", label: "Above ₹20,000", min: 20000, max: null },
 ];
 
 // ─── Transform raw API college into the shape filter logic expects ───────────
@@ -137,11 +137,10 @@ function CollegeCardWrapper({ college, filteredStreams, collegeStreamSelection, 
         <button
           onClick={handleWishlist}
           title={saved ? "Remove from saved" : "Save to wishlist"}
-          className={`p-2 rounded-xl border shadow-md transition-all duration-200 hover:scale-110 active:scale-95 ${
-            saved
+          className={`p-2 rounded-xl border shadow-md transition-all duration-200 hover:scale-110 active:scale-95 ${saved
               ? "bg-rose-500 border-rose-500 text-white hover:bg-rose-600 hover:border-rose-600"
               : "bg-white/90 dark:bg-slate-800/90 border-slate-200 dark:border-slate-600 text-slate-400 hover:bg-rose-50 dark:hover:bg-rose-900/20 hover:border-rose-300 hover:text-rose-500"
-          }`}
+            }`}
         >
           <Heart className={`h-4 w-4 transition-all duration-200 ${saved ? "fill-white" : ""}`} />
         </button>
@@ -175,9 +174,9 @@ const Discover = () => {
   const [selectedStreams, setSelectedStreams] = useState([]);
   const [collegeStreamSelection, setCollegeStreamSelection] = useState({});
 
-  const [showQuiz, setShowQuiz]       = useState(false);
-  const [quizResults, setQuizResults]  = useState(null);
-  const [toast, setToast]              = useState(null);
+  const [showQuiz, setShowQuiz] = useState(false);
+  const [quizResults, setQuizResults] = useState(null);
+  const [toast, setToast] = useState(null);
   const [showLoginPrompt, setShowLoginPrompt] = useState(false);
 
   const { user } = useAuth();
@@ -194,7 +193,7 @@ const Discover = () => {
       try {
         setLoading(true);
         setError(null);
-        const response = await fetch("http://localhost:5000/api/colleges/allcolleges");
+        const response = await fetch("https://college-finder-7xrp.onrender.com/api/colleges/allcolleges");
         if (!response.ok) throw new Error(`Failed to fetch colleges (${response.status})`);
         const data = await response.json();
         const list = Array.isArray(data) ? data : (data.data ?? []);
